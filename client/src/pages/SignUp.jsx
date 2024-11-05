@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate} from 'react-router-dom';
 
 function SignUp() {
 
@@ -8,7 +8,7 @@ function SignUp() {
 
   const[loading,setLoading]=useState(false)
 
-
+const navigate=useNavigate()
 
   const handleChange=(e)=>{
 
@@ -37,6 +37,7 @@ if(data.success===false){
   setError(true)
   return;
  }
+ navigate('/signin')
 
 } catch (error) {
   
@@ -84,7 +85,7 @@ if(data.success===false){
       </form>
       <div className="flex gap-2 mt-5">
         <p>Have an account?</p>
-        <Link to="/sign-in">
+        <Link to="/signin">
           <span className="text-blue-500">Sign in</span>
         </Link>
       </div>
