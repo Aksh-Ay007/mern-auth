@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.13.1",
+    "@cloudinary/url-gen": "^1.21.0",
     "@reduxjs/toolkit": "^2.3.0",
+    "axios": "^1.7.7",
     "firebase": "^11.0.1",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
