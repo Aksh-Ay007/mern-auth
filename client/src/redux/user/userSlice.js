@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   currentUser: null,
   loading: false,
-  error: false,
+  error: null,
+  isAdmin: false, // Add this line
+
 };
 
 const userSlice = createSlice({
@@ -14,10 +16,15 @@ const userSlice = createSlice({
       state.loading = true;
     },
     signInSuccess: (state, action) => {
-      state.currentUser = action.payload;
+      state.currentUser = {
+        token: action.payload.token,
+        username: action.payload.username,
+        isAdmin: action.payload.isAdmin, // Ensure this line is here
+      };
       state.loading = false;
-      state.error = false;
+      state.error = null;
     },
+    
     signInFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
@@ -28,7 +35,7 @@ const userSlice = createSlice({
     updateUserSuccess: (state, action) => {
       state.currentUser = action.payload;
       state.loading = false;
-      state.error = false;
+      state.error = null;
     },
     updateUserFailure: (state, action) => {
       state.loading = false;
@@ -40,7 +47,7 @@ const userSlice = createSlice({
     deleteUserSuccess: (state) => {
       state.currentUser = null;
       state.loading = false;
-      state.error = false;
+      state.error = null;
     },
     deleteUserFailure: (state, action) => {
       state.loading = false;
@@ -49,7 +56,7 @@ const userSlice = createSlice({
     signOut: (state) => {
       state.currentUser = null;
       state.loading = false;
-      state.error = false;
+      state.error = null;
     },
   },
 });
